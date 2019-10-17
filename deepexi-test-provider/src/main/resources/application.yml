@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: deepexi-test
+  profiles:
+    active: local
+swagger:
+  base-package: com.deepexi.controller
+  info:
+    title: deepexi-test
+server:
+  error:
+    include-stacktrace: always
+    include-exception: true
+logging:
+  file: 'logs/${spring.application.name}.log'
+eureka:
+  client:
+    service-url:
+      defaultZone: 'http://user:pass@127.0.0.1:8761/eureka/'
+feign:
+  hystrix:
+    enabled: true
+shiro:
+  web:
+    mode: stateless
+    filter-chain-definition:
+      authc:
+        - /v1/**
+      anon:
+        - /**
